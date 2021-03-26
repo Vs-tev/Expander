@@ -1,0 +1,21 @@
+.navbar-brand {
+    color: rgb(97, 97, 62) !important;
+
+}
+
+.navbar .navbar-nav>li>a {
+    font-weight: 600;
+    font-size: 15px
+}
+
+.apply-dropdown-menu {
+    z-index: 9999;
+
+}
+
+.dropdown-menu-right>a {
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 15px 8px 25px;
+    width: 190px
+}

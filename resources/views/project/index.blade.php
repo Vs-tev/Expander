@@ -52,8 +52,6 @@
                     <p class=""></p>
                 </div>
 
-
-
             </div>
             <div class="px-3 pb-1 bg-light" style="max-height: 50px;  ">
                 <div class="p-1">
