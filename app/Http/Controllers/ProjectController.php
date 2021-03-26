@@ -83,7 +83,7 @@ class ProjectController extends Controller
             //Filename to store
             $fileNameToStore = $filename.'_'.time().'.'.$extention;
             //Upload Image
-            $path = request()->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $path = request()->file('cover_image')->storeAs('cover_images', $fileNameToStore);
         }else {
             $fileNameToStore = 'noimage.jpg';
         }
