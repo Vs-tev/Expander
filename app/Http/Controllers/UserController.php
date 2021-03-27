@@ -96,7 +96,7 @@ class UserController extends Controller
             //Filename to store
             $fileNameToStore = $filename.'_'.time().'.'.$extention;
             //Upload Image
-            $path = request()->file('avatar')->storeAs('cover_images', $fileNameToStore, 'local');
+            $path = request()->file('avatar')->storeAs('cover_images', $fileNameToStore, 'public');
         }
 
         DB::table('users')->where('id', auth()->id())->update([
