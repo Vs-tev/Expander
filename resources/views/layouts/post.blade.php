@@ -1,6 +1,6 @@
 
 <div class="project-container border rounded mb-4 shadow-sm">
-  <div class="d-flex px-3 pt-3 align-content-center justify-content-between bg-white">
+  <div class="d-md-flex px-3 pt-3 align-content-center justify-content-between bg-white">
     <div class="d-flex">
       <div>
         <img src="/storage/cover_images/{{$project->user->avatar}}" alt="" class="rounded-circle shadow-sm" 

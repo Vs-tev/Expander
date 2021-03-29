@@ -352,6 +352,9 @@ select {
 select {
     word-wrap: normal;
 }
+.pointer{
+    cursor: pointer;
+}
 
 button,
 [type=button],

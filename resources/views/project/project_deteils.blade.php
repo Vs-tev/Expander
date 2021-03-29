@@ -2,7 +2,7 @@
 @section('content')
 @include('apply.apply')
 
-<div class="container m-auto ">
+<div class="container col-12 col-md-9 m-auto ">
     <div class=" mt-3">
         <a href="/profile/{{$project->user->id}}" class="d-flex align-items-center">
             <img src="/storage/cover_images/{{$project->user->avatar}}" alt="John Doe" class="rounded-circle shadow-sm"
@@ -14,19 +14,19 @@
         </a>
     </div>
     <hr>
-    <div class="col-12 m-auto">
+    <div class="col-12 p-0 m-auto">
 
-        <div class="d-flex mt-4">
-            <h2 class="font-weight-600">"{{$project->project_name}}" /</h2>&nbsp;
-            <h2 class="p-0 m-0 blue">{{$project->help}}</h2>
+        <div class="d-md-flex mt-4">
+            <h5 class=" p-0 m-0">{{$project->project_name}}/ </h5>
+            <div class="p-0 m-0 text-muted">({{$project->help}})</div>
         </div>
-        <p class="text-muted font-weight-500 p-0">{{$project->progress}}</p>
+        <h6><span class="badge badge-primary p-2 rounded-0 font-weight-500">{{$project->progress}}</span></h6>
 
         <div class="d-flex">
             <p>Founded on:</p>&nbsp;
             <p>{{$project->started_at->toFormattedDateString()}}</p>
         </div>
-        <div class="col-8 mx-auto p-0">
+        <div class="mx-auto p-0">
             <img class="m-auto" src="/storage/cover_images/{{$project->cover_image}}" alt=""
                 style="width:100%; min-height:300px; object-fit:cover">
         </div>
@@ -73,7 +73,7 @@
         </div>
         @endif
         <hr>
-        <div class="commentar px-3 pb-3">
+        <div class="commentar pb-3">
             @auth
             <form method="POST" action="/comments/{{$project->id}}" class="d-flex border p-2 mb-2"
                 style="border-radius: 10px">

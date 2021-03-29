@@ -1,13 +1,13 @@
 @include('layouts.modal_avatar')
     @include('layouts.modal_profil')
     @include('layouts.errors')
-        <div class="profile-container row rounded shadow-sm m-0 py-3 px-4 border border-top-0">
+        <div class="profile-container row rounded shadow-sm m-0 py-3 px-2 px-md-4 border border-top-0">
             <div class="d-flex justify-content-between pb-2 mb-auto border-bottom w-100">
                 <a href="#profile_modal" class="btn btn-link d-flex p-0" data-toggle="modal">
                     <i class="material-icons small-i mr-1">edit</i><span> Edit Profile</span></a>
                 <p class="p-0 m-0"><span class="text-muted">Profile: </span> {{Auth::user()->ProfileExtention->profile ?? ''}}</p>
             </div>
-            <div class="d-flex align-items-center mt-4 w-100">
+            <div class="d-md-flex text-center text-md-left align-items-center mt-2 mt-md-4 w-100">
                 <div class="align-self-end mt-3">
                     <i data-toggle="modal" data-target="#myModal" class="material-icons"
                     style="cursor: pointer">add_a_photo</i>
@@ -17,12 +17,12 @@
                     style="width:160px; height:160px; object-fit:cover; border: 4px solid white">
                 </div>
                
-                <div class="flex-grow-1 ml-3 mt-2">
+                <div class="flex-grow-1 ml-0 ml-md-3 mt-2">
                     <div class="">
                         <h4 class="m-0 font-weight-600">{{Auth::user()->name}}</h4>
                         <h5 class="my-2">{{Auth::user()->ProfileExtention->occupation ?? ''}}</h5>
                     </div>
-                    <div class="d-flex ml-auto text-muted">
+                    <div class="d-flex mr-auto text-muted">
                         <span class="d-flex">
                             <i class="material-icons small-i">location_on</i>
                             <p class="m-auto">{{Auth::user()->ProfileExtention->city ?? 'city'}}, {{Auth::user()->ProfileExtention->country ?? 'country'}}</p>

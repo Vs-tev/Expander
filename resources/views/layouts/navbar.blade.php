@@ -2,21 +2,28 @@
 <div class="row m-0 bg-white logo-container">
 
     <nav class="navbar navbar-expand-md container">
-        <a class="navbar-brand" href="#"><h2 class="">{{ config('app.name', 'expander') }}</h2></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <a class="navbar-brand" href="{{route('home')}}">
+            <h2 class="">{{ config('app.name', 'expander') }}</h2></a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
              <span class="navbar-toggler-icon"><i class="material-icons">menu</i></span>
         </button>
         <div>
-            <ul class="navbar-nav mr-auto">
-                
+           
+        </div>
+        <div class="collapse navbar-collapse ml-auto" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                @guest
                 <li class="nav-item">
-                    <a href="/" class="nav-link yellow">{{ __('Home') }}</a> 
-                </li> 
-                <li class="nav-item">
-                    <a href="/welcome" class="nav-link yellow">{{ __('Dashboard') }}</a> 
-                </li> 
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+                @else
                 @auth
-
+    
                 <li class="nav-item dropdown">
                     <a href="" id="apply" class="nav-link yellow"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <span class="d-flex ">{{ __('Apply') }}&nbsp;
@@ -27,7 +34,7 @@
                             @endif
                         </span>
                     </a> 
-                    <div class="dropdown-menu apply-dropdown-menu p-0 m-0" id="apply_menu" style="width:450px">
+                    <div class="dropdown-menu apply-dropdown-menu p-0 m-0" id="apply_menu" >
                         <form action="">
                             <ul class="nav navv border-bottom" role="tablist">
                                 <li class="nav-item flex-fill border-right p-1" style="width: 50%">
@@ -116,32 +123,24 @@
                     </div>
                     </div>
                 </li> 
-                @endauth
-            </ul>
-        </div>
-        <div class="collapse navbar-collapse ml-auto" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto">
-                @guest
+                <li class="nav-item ml-0">
+                    <a href="/" class="nav-link yellow">{{ __('Home') }}</a> 
+                </li> 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endif
-                @else
-                    
+                    <a href="/welcome" class="nav-link yellow mr-md-3">{{ __('Dashboard') }}</a> 
+                </li> 
+                @endauth
                     <li class="nav-item dropdown">
-                        <div class="d-inline-flex">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle mr-2 font-size-15 yellow font-weight-600" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->email }}
-                            </a>
-                            
-                            <img src="/storage/cover_images/{{Auth::user()->avatar}}" alt="" class="rounded-circle shadow-sm"
-                            style="width:40px; height:40px; object-fit:cover; border: 4px solid white">
-                       
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="">
+                            <div class="d-inline-flex" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+                                <a id="navbarDropdown" class="nav-link  mr-2 font-size-15 yellow font-weight-600" href="#"  v-pre>
+                                    {{ Auth::user()->email }}
+                                </a>
+                                
+                                <img src="/storage/cover_images/{{Auth::user()->avatar}}" alt="" class="rounded-circle shadow-sm"
+                                style="width:40px; height:40px; object-fit:cover; border: 4px solid white">
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-left border-0" aria-labelledby="navbarDropdown">
                             <a href="/create" class="dropdown-item">{{ __('Create Project') }}</a>    
 
                             <a href="/index/{{ Auth::user()->id }}" class="dropdown-item">{{ __('My Profile') }}</a> 
@@ -154,7 +153,7 @@
                             </form>
                         </div>
                     </div>
-                    </li>
+                    </li>  
                 @endguest
             </ul>
         </div>

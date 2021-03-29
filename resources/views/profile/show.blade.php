@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('content')
   
-  <div class="col-10 m-auto">
+  <div class="col-12 col-md-9 m-auto">
     <div class="container border shadow-sm bg-white px-4 mt-3">
     
-      <div class="d-flex mt-4 w-100">
+      <div class="d-md-flex mt-4 w-100">
         <div>
           <img src="/storage/cover_images/{{$user->avatar}}" alt="" class="rounded-circle shadow-sm" 
           style="width:100px; height:100px; object-fit:cover; border: 4px solid white">
@@ -15,7 +15,7 @@
               <h5 class="text-muted">{{$user->ProfileExtention->occupation ?? '' }}</h5>
           </div>
         </div>
-        <div class="d-flex ml-auto">
+        <div class="d-flex ml-3 ml-md-auto">
           <h5>Profile: </h5>&nbsp;
         <h5>{{$user->ProfileExtention->profile ?? '' }}</h5>
         </div>
@@ -28,7 +28,7 @@
         </div>
       </div>
 
-      <div class="d-flex my-4">
+      <div class="d-md-flex my-4">
         <div>
           <h5 class="font-weight-600">Contact:</h5>
           <div class="d-flex">
@@ -56,7 +56,7 @@
     <div class="row p-0 mt-4 mx-0">
   
       <!-- sidebar -->
-      <div class="col-3  p-0 m-0 border shadow-sm bg-white" style="height: 100%">
+      <div class="col-12 col-md-3  p-0 m-0 border shadow-sm bg-white" style="height: 100%">
         <div class="">
           <ul class="list-group list-unstyled">
             <li class="list-group-item-action d-flex justify-content-between mt-1 py-2 px-4">
@@ -73,7 +73,7 @@
       </div>
       <!-- end sidebar -->
 
-      <div class="col-9 pr-0">
+      <div class="col-12 col-md-9 px-0 pl-md-2 mt-4 mt-md-0">
         @foreach ($user->projects as $project)
           @include('layouts.post')
         @endforeach

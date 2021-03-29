@@ -1,4 +1,4 @@
-<div class="col-3 border p-0 m-0 shadow-sm bg-white" style="height: 100%">
+<div class="col-12 col-md-3 border p-0 m-0 shadow-sm bg-white">
    
     <div class="list-group list-group-flush list-unstyled">
         <a href="" class="list-group-item list-group-item-action d-flex justify-content-between">

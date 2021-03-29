@@ -3,11 +3,35 @@
 @section('content')
 <div class="">
 
-
     <div class="container myapplayings my-3">
-        <div class="row b ">
-            <div class="col-4 bg-white p-0 m-0">
+        <div class="row px-md-0 px-3 wrapper-container">
 
+            {{-- on mobile screen collaspible content --}}
+            <div class="col-12 px-0 d-block d-md-none wrapper-top">
+                <div class="d-flex justify-content-between border rounded pointer" data-toggle="collapse" data-target="#collapse-content">
+                    <h5 class="font-weight-600 ml-3 my-auto py-3">My Applyings </h5>
+                    <h5 class="font-weight-600 mr-3 my-auto">{{$myapplyings->count()}}</h5>
+                </div>
+                <div id="collapse-content" class="collapse">
+                    @foreach ($myapplyings as $apply)
+                    <a href="#id{{$apply->project->id}}" onclick="$('.collapse').collapse('hide')"
+                        class="list-group-item border ounderd list-group-item-action d-flex align-content-center rounded-0"
+                        data-toggle="tab">
+                        <img src="/storage/cover_images/{{$apply->project->user->avatar}}" alt=""
+                            class="rounded-circle shadow-sm"
+                            style="width:45px; height:45px; object-fit:cover; border: 4px solid white">
+                        <span class="ml-2 my-auto">
+                            <h6 class="p-0 m-0 font-weight-600">
+                                {{$name = strlen($apply->project->project_name) > 24 ? substr($apply->project->project_name, 0, 24). "..." : $apply->project->project_name}}
+                            </h6>
+                        </span>
+                        <small class="light ml-auto my-auto">{{$apply->apply_body->last()->created_at->diffForHumans()}}</small>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="d-none d-md-block col-md-4 bg-white p-0 m-0">
                 <div class="list-group conversations border border-top-0 rounded-0">
                     <div class="d-flex justify-content-between border-top border-bottom-0">
                     <h5 class="font-weight-600 ml-3 my-auto py-4">My Applyings </h5>
@@ -31,7 +55,7 @@
                 </div>
             </div>
 
-            <div class="col-8 tab-content bg-white border border-left-0 border-right-0 p-0 m-0 ">
+            <div class="col-12 col-md-8 tab-content bg-white border border-left-0 border-right-0 mt-3 mt-md-0 p-0 m-0 wrapper-bottom">
                 <div id="home" class="m-0 p-0 tab-pane active">
                     <div class="m-4">
                         <h2 class="text-center text-muted fonwt-eight-600">Select Apply</h2>
@@ -41,17 +65,17 @@
                 @foreach ($myapplyings as $apply)
                     <div id="id{{$apply->project->id}}" class="row p-0 m-0 main tab-pane fade">
                         <div class="scrollable col">
-                            <div class="d-flex ml-2 mt-3 mb-5">
+                            <div class="d-md-flex ml-0  ml-md-2 mt-3 mb-5">
                                 <img src="/storage/cover_images/{{$apply->project->user->avatar}}" alt=""
                                     class="rounded-circle shadow-sm"
                                     style="width:45px; height:45px; object-fit:cover; border: 4px solid white">
 
-                                <div class="flex-grow-1 ml-2 mr-4">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <div class="d-flex">
-                                                <h5 class="my-0">{{$apply->project->project_name}} /</h5>
-                                                <h5 class="blue">&nbsp;{{$apply->project->help}}</h5> 
+                                <div class="flex-grow-1 ml-0  ml-md-2 mr-4">
+                                    <div class="d-md-flex justify-content-between">
+                                        <div >
+                                            <div class="d-md-flex align-items-center">
+                                                <h5 class="font-weight-600">{{$apply->project->project_name}}</h5>
+                                                <h6 class="text-muted"> {{$apply->project->help}}</h6> 
                                             </div>
                                             <a href="profile/{{$apply->project->user->id}}">
                                                 <h6 class="my-0">{{$apply->project->user->name}}</h6>
@@ -60,7 +84,7 @@
 
                                         <p>Branch: <span>{{$apply->project->branch}}</span></p>
                                     </div>
-                                    <div class="d-flex align-items-center bg-light border mt-4">
+                                    <div class="d-none d-md-block d-md-flex align-items-center bg-light border mt-4">
                                         <div class="">
                                             <p class="font-weight-600 m-3">Where:</p>
                                             <p class="font-weight-600 m-3">Published:</p>
@@ -72,7 +96,21 @@
                                             <p class="m-3">{{$apply->project->progress}}</p>
                                         </div>
                                     </div>
-                                    <div class="col-9 mx-auto mt-4 p-0">
+                                    <div class="d-block d-md-none align-items-center bg-light border mt-4">
+                                        <div class="m-2">
+                                            <div class="font-weight-600">Where:</div> 
+                                            <p class="t-1 mb-2">{{$apply->project->city}},{{$apply->project->website}}</p>
+                                        </div>
+                                        <div class="m-2">
+                                            <div class="font-weight-600">Published:</div>
+                                            <p class="mt-1 mb-2">{{$apply->project->created_at->diffForHumans()}}</p>
+                                        </div>
+                                        <div class="m-2">
+                                            <div class="font-weight-600">Stage of development:</div>
+                                            <p class="t-1 mb-2">{{$apply->project->progress}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mx-auto mt-4 p-0">
                                         <img class="m-auto" src="/storage/cover_images/{{$apply->project->cover_image}}" alt=""
                                             style="width:100%; height:250px; object-fit:cover">
                                     </div>

@@ -1,5 +1,5 @@
 @foreach ($project->comments as $comment)
-    <div class="d-flex py-2 px-3">
+    <div class="d-flex py-2">
         <div class="">
             <img src="/storage/cover_images/{{$comment->user->avatar}}" alt="" class="rounded-circle shadow-sm" 
             style="width:50px; height:50px; object-fit:cover;">
