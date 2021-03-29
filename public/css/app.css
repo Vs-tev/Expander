@@ -11,6 +11,9 @@
     background: #ffffff;
 }
 
+.sidebar{
+    max-height: 190px;
+}
 .profile-container {
     height: auto;
     background-color: #ffffff;
