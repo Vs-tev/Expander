@@ -2,20 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use Iluminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Storage;
-
 use \App\Http\View\Composers\DropdownsComposer;
-
 use App\Project;
-
 use App\Comment;
-
 use Carbon\Carbon;
 
 
@@ -88,8 +81,6 @@ class ProjectController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
 
-   
-      
         Project::create([
             'user_id' => auth()->id(), //the same as auth()->user()->id;
             'project_name' => request('project_name'),
@@ -107,18 +98,6 @@ class ProjectController extends Controller
         return redirect('/index/profile');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-         
-        
-    
-    }
 
     /**
      * Show the form for editing the specified resource.
