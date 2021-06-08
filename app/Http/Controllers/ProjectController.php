@@ -27,7 +27,7 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(){
-        $this->middleware('auth'); //if is not logged in canot create project
+        $this->middleware('auth'); 
     }
 
      public function index()
@@ -70,7 +70,7 @@ class ProjectController extends Controller
             'country' => 'required',
             'city' => 'required',
             'website' => 'url|nullable',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:2999'
         ]);
 
         if(request()->hasFile('cover_image')){
